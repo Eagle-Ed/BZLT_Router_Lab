@@ -1,0 +1,42 @@
+conf t
+
+hostname Rt_E2
+
+no ip domain lookup
+
+enable pass lab
+
+line vty 0 15
+ no login
+ logging synchronous
+ exec-timeout 360 0
+
+line con 0
+ logging synchronous
+ exec-timeout 360 0
+
+default interface f0/0
+default interface f0/1
+
+int f0/1
+ descr Client Subnetze
+ no ip address 
+!
+int f0/1.20
+ descr Produktion
+ encapsulation dot1q 20
+ ip addr 10.0.0.2 255.255.255.0
+!
+int f0/1.30
+ descr Clients Ein und Verkauf
+ encapsulation dot1q 30
+!
+int f0/1.40
+ descr Clients Verwaltung
+ encapsulation dot1q 40
+
+ 
+int f0/0
+ no shut
+ description WAN to Sw_WAN Port F0/3
+!
