@@ -20,7 +20,8 @@ default interface f0/1
 
 int f0/1
  descr Client Subnetze
- no ip address 
+ no ip address
+ no shutdown 
 !
 int f0/1.20
  descr Produktion
